@@ -1,0 +1,23 @@
+{% spaceless %}
+<html dir="rtl">
+<head>
+<title>ביכלקה - דברים שחסר</title>
+</head>
+<body style="font-size:10pt; margin-top:1px;">
+{% load humanize %}
+<h3>דברים שחסר</h3>
+<a href="/hasser/add">חסר עוד משהו!</a>
+<ul>
+    {% for need in needs %}
+        <li>{{ need.user.first_name }}: חסר {{ need.caption }} ({{ need.description|truncatewords:5 }}) <a onclick="javascript:return confirm('בטוחים? אם קניתם את הפריט {{ need.caption }} הוא לא יוצג יותר!');" href="/hasser/bought?id={{ need.id }}">קניתי!</a></li>
+    {% endfor %}
+</ul>
+
+<strong>מחובר כ{{ logged.first_name }}</strong>
+אפשר <a href="/out">להתנתק</a> או {% if u %} <a href="/?user=all">לצפות בקניות של כוווולם</a> {% else %} <a href="/">לצפות רק בקניות שלך</a> {% endif %}
+
+<p>קניתם משהו? למה שלא <a href="/monitor/add">תכתבו</a> את זה?</p>
+
+</body>
+</html>
+{% endspaceless %}

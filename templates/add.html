@@ -1,0 +1,29 @@
+{% spaceless %}
+<html dir="rtl">
+<head>
+<title>הוספת קנייה</title>
+</head>
+<body style="font-size:10pt; margin-top:1px;">
+<h3>מה קנית?</h3>
+<p>או שבעצם <a href="/">לא קנית כלום?</a></p>
+<div>
+<form method="post" action="/monitor/save">
+<label for="caption">שם המוצר</label>
+<input type="text" name="caption" /><br/>
+<label for="description">נא לפרט</label>
+<textarea name="description"></textarea><br/>
+<label for="cost">כמה עלה (לכתוב מספר)</label>
+<input type="text" name="cost" /><br/>
+<label for="category">קטגוריה</label>
+<select name="category">
+    {% for c in categories %}
+        <option value="{{ c.id }}">{{ c.name }}</option>
+    {% endfor %}
+</select><br/>
+
+<input type="submit" value="זה הכל" />
+</form>
+</div>
+</body>
+</html>
+{% endspaceless %}

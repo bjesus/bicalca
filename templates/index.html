@@ -1,0 +1,23 @@
+{% spaceless %}
+<html dir="rtl">
+<head>
+<title>ביכלקה</title>
+</head>
+<body style="font-size:10pt; margin-top:1px;">
+{% load humanize %}
+<h3>הקניות של {% if u %}{{ u.first_name }}{% else %}כולם{% endif %}</h3>
+<a href="/monitor/add">קניתי עוד משהו!</a>
+<ul>
+    {% for purchase in purchases %}
+        <li>{% if not u %}<a href="/?user={{ purchase.user.username }}">{{ purchase.user.first_name }}</a>:{% endif %} קניתי {{ purchase.caption }}, {{ purchase.description|truncatewords:5 }} ב-{{ purchase.cost }}ש"ח לפני {{ purchase.time|timesince }}</li>
+    {% endfor %}
+</ul>
+
+<strong>מחובר כ{{ logged.first_name }}</strong>
+אפשר <a href="/out">להתנתק</a> או {% if u %} <a href="/?user=all">לצפות בקניות של כוווולם</a> {% else %} <a href="/">לצפות רק בקניות שלך</a> {% endif %}
+
+<p>חסר משהו בבית? או ש<a href="/hasser/add">תגידו</a> או ש<a href="/hasser">תקנו</a></p>
+
+</body>
+</html>
+{% endspaceless %}

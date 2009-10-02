@@ -1,0 +1,19 @@
+{% spaceless %}
+<html dir="rtl">
+<head>
+<title>הוספת משהו שחסר</title>
+</head>
+<body style="font-size:10pt; margin-top:1px;">
+<h3>אחותי, מה חסר לך?</h3>
+<div>
+<form method="post" action="/hasser/save">
+<label for="caption">שם המוצר</label>
+<input type="text" name="caption" /><br/>
+<label for="description">רוצה לפרט?</label>
+<textarea name="description"></textarea><br/>
+<input type="submit" value="זה הכל" />
+</form>
+</div>
+</body>
+</html>
+{% endspaceless %}
